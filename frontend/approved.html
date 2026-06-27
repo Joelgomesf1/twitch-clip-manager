@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="style.css">    
+</head>
+
+<body>
+
+<div class="topbar">
+
+    <h1>Twitch Clip Manager</h1>
+
+    <a href="/index.html" class="menu-link">
+       Inicio
+
+    </a>
+
+</div>
+
+
+<div class="container">
+
+    <div class="video">
+
+    <h2 id="tituloClip">Nenhum clip selecionado</h2>
+
+    <p id="streamerClip"></p>
+
+    <a id="linkClip" href="#" target="_blank">
+        Assistir na Twitch
+    </a>
+
+    <br><br>
+
+    <button onclick="baixarClip()">
+    Baixar
+    </button>
+  
+
+    <button id="btnExcluir">
+
+    Excluir Clip
+
+    </button>
+
+
+    </div>
+
+    <div class="sidebar">
+
+        <h2>Clips</h2>
+
+        <div id="clips"></div>
+
+    </div>
+
+</div>
+
+<script src="approved.js"></script>
+
+</body>
+
+</html>
