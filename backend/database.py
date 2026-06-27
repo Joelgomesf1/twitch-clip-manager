@@ -1,11 +1,14 @@
 import sqlite3
 from pathlib import Path
 
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent
 DB_PATH = BASE_DIR / "database" / "clips.db"
 
 
 def get_connection():
+    print(f"DB_PATH: {DB_PATH}")
+    print(f"Existe: {DB_PATH.exists()}")
+
     return sqlite3.connect(DB_PATH)
 
 
