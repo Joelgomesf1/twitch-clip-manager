@@ -196,5 +196,9 @@ def listar_streamers():
     ]
 
 
-app.mount("/", StaticFiles(directory="../frontend", html=True), name="frontend")
+from pathlib import Path
+
+FRONTEND_DIR = Path(file).resolve().parent.parent / "frontend"
+
+app.mount("/", StaticFiles(directory=str(FRONTEND_DIR), html=True), name="frontend")
 
