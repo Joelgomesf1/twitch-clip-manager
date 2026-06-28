@@ -6,8 +6,8 @@ DB_PATH = BASE_DIR / "database" / "clips.db"
 
 
 def get_connection():
-    print(f"DB_PATH: {DB_PATH}")
-    print(f"Existe: {DB_PATH.exists()}")
+
+    DB_PATH.parent.mkdir(parents=True, exist_ok=True)
 
     return sqlite3.connect(DB_PATH)
 
@@ -283,6 +283,39 @@ def adicionar_coluna_vod():
     except sqlite3.OperationalError:
         pass
 
+    conn.close
+
+def criar_tabelas():
+
+    conn = get_connection()
+
+    cursor = conn.cursor()
+
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS clips (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            platform TEXT NOT NULL,
+            streamer TEXT NOT NULL,
+            clip_id TEXT UNIQUE,
+            title TEXT,
+            url TEXT,
+            vod_url TEXT,
+            status TEXT DEFAULT 'pending'
+        )
+    """)
+
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS streamers (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            platform TEXT,
+            streamer TEXT UNIQUE
+        )
+    """)
+
+    conn.commit()
+
     conn.close()
+
+criar_tabelas()
 
 adicionar_coluna_vod()    
