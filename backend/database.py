@@ -316,44 +316,7 @@ def criar_tabelas():
 
     conn.close()
 
-<<<<<<< HEAD
-criar_tabelas()
-
-adicionar_coluna_vod()    
-=======
-
-def criar_tabelas():
-
-    conn = get_connection()
-
-    cursor = conn.cursor()
-
-    cursor.execute("""
-        CREATE TABLE IF NOT EXISTS clips (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            platform TEXT NOT NULL,
-            streamer TEXT NOT NULL,
-            clip_id TEXT UNIQUE,
-            title TEXT,
-            url TEXT,
-            vod_url TEXT,
-            status TEXT DEFAULT 'pending'
-        )
-    """)
-
-    cursor.execute("""
-        CREATE TABLE IF NOT EXISTS streamers (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            platform TEXT,
-            streamer TEXT UNIQUE
-        )
-    """)
-
-    conn.commit()
-
-    conn.close()
 
 criar_tabelas()
 
 adicionar_coluna_vod()    
->>>>>>> 1fb4736 (Reorganiza estrutura do projeto)
