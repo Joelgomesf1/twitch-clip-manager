@@ -15,9 +15,15 @@ def buscar_clips(streamer, dias):
 
     clips = get_clips(user_id, dias)
 
+    print(f"Streamer: {streamer}")
+    print(clips)
+    print(f"Quantidade de clips recebidos: {len(clips.get('data', []))}")
+
     total = 0
 
     for clip in clips["data"]:
+
+        print(f"Clip: {clip['id']} - {clip['title']}")
 
         if clip_existe(clip["id"]):
             continue
