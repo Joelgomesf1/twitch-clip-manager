@@ -22,9 +22,13 @@ def get_access_token():
         }
     )
 
+    print("Status:", response.status_code)
+    print("Resposta:", response.text)
+
     data = response.json()
 
     return data["access_token"]
+
 
 def get_user_id(username):
     token = get_access_token()
